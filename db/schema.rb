@@ -10,10 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_04_054623) do
+ActiveRecord::Schema.define(version: 2020_12_06_050001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cash_in_histories", force: :cascade do |t|
+    t.bigint "cash_management_table_id"
+    t.decimal "revenues_amount", precision: 15, scale: 2
+    t.decimal "equity_amount", precision: 15, scale: 2
+    t.decimal "convertible_note_amount", precision: 15, scale: 2
+    t.decimal "bank_debt_amount", precision: 15, scale: 2
+    t.decimal "other_amount", precision: 15, scale: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cash_management_table_id"], name: "index_cash_in_histories_on_cash_management_table_id"
+  end
+
+  create_table "cash_management_tables", force: :cascade do |t|
+    t.bigint "company_id"
+    t.string "cash_in"
+    t.string "cash_out"
+    t.string "initial_cash"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_cash_management_tables_on_company_id"
+  end
+
+  create_table "cash_out_histories", force: :cascade do |t|
+    t.bigint "cash_management_table_id"
+    t.decimal "cogs_amount", precision: 15, scale: 2
+    t.decimal "employees_amount", precision: 15, scale: 2
+    t.decimal "services_amount", precision: 15, scale: 2
+    t.decimal "operating_expenses_amount", precision: 15, scale: 2
+    t.decimal "investments_amount", precision: 15, scale: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cash_management_table_id"], name: "index_cash_out_histories_on_cash_management_table_id"
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "country"
+    t.string "currency"
+    t.integer "student_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "jwt_denylist", force: :cascade do |t|
     t.string "jti", null: false
