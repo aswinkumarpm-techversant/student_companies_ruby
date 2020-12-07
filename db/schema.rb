@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_050001) do
   enable_extension "plpgsql"
 
   create_table "cash_in_histories", force: :cascade do |t|
-    t.bigint "cash_management_table_id"
+    t.bigint "company_id"
     t.decimal "revenues_amount", precision: 15, scale: 2
     t.decimal "equity_amount", precision: 15, scale: 2
     t.decimal "convertible_note_amount", precision: 15, scale: 2
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_050001) do
     t.decimal "other_amount", precision: 15, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["cash_management_table_id"], name: "index_cash_in_histories_on_cash_management_table_id"
+    t.index ["company_id"], name: "index_cash_in_histories_on_company_id"
   end
 
   create_table "cash_management_tables", force: :cascade do |t|
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_050001) do
   end
 
   create_table "cash_out_histories", force: :cascade do |t|
-    t.bigint "cash_management_table_id"
+    t.bigint "company_id"
     t.decimal "cogs_amount", precision: 15, scale: 2
     t.decimal "employees_amount", precision: 15, scale: 2
     t.decimal "services_amount", precision: 15, scale: 2
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_050001) do
     t.decimal "investments_amount", precision: 15, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["cash_management_table_id"], name: "index_cash_out_histories_on_cash_management_table_id"
+    t.index ["company_id"], name: "index_cash_out_histories_on_company_id"
   end
 
   create_table "companies", force: :cascade do |t|

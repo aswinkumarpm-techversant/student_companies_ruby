@@ -47,7 +47,7 @@ class Api::V1::CashOutHistoriesController < ApiController
   end
   # Only allow a trusted parameter “white list” through.
   def cash_out_history_params
-    params.require(:cash_out_history).permit(:cogs_amount, :employees_amount, :services_amount, :operating_expenses_amount, :investments_amount, :cash_management_table_id)
+    params.require(:cash_out_history).permit(:cogs_amount, :employees_amount, :services_amount, :operating_expenses_amount, :investments_amount, :company_id)
   end
 end
 

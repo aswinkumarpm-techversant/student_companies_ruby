@@ -1,7 +1,7 @@
 class CreateCashInHistory < ActiveRecord::Migration[6.0]
   def change
     create_table :cash_in_histories do |t|
-      t.belongs_to :cash_management_table
+      t.belongs_to :company
       t.decimal :revenues_amount, precision: 15, scale: 2
       t.decimal :equity_amount , precision: 15, scale: 2
       t.decimal :convertible_note_amount , precision: 15, scale: 2

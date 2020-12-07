@@ -47,7 +47,7 @@ class Api::V1::CashInHistoriesController < ApiController
   end
   # Only allow a trusted parameter “white list” through.
   def cash_in_history_params
-    params.require(:cash_in_history).permit(:revenues_amount, :equity_amount, :convertible_note_amount, :bank_debt_amount, :other_amount, :cash_management_table_id)
+    params.require(:cash_in_history).permit(:revenues_amount, :equity_amount, :convertible_note_amount, :bank_debt_amount, :other_amount, :company_id)
   end
 end
 
