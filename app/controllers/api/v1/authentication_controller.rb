@@ -10,7 +10,6 @@ class Api::V1::AuthenticationController < ApiController
     end
   end
   def fetch
-    binding.pry
     render json: current_user
   end
 end
