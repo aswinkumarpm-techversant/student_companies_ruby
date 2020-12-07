@@ -1,5 +1,5 @@
 class Api::V1::HomeController < ApiController
-  before_action :authenticate_user!
+  before_action :authenticate_request!
 
   # skip_before_action :authenticate_user!, only: [:action_to_skip_here]
 

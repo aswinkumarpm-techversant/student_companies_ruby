@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
   root 'pages#index'
-  devise_for :users, controllers: { registrations: 'registrations' }
+  # devise_for :users, controllers: { registrations: 'registrations' }
   namespace :api do
     namespace :v1 do
-      get 'home/index'
-      post :auth, to: 'authentication#create'
-      get  '/auth' => 'authentication#fetch'
+      get 'home', to: 'home#index'
+      post 'auth_user', to: 'authentication#authenticate_user'
 
-      resources :users, only: [:create]
+      devise_for :users, controllers: { registrations: 'registrations' , sessions: 'sessions'}
 
       post '/sign_in' , to:'users#login'
       get '/auto_login' => 'users#auto_login'

@@ -1,15 +1,20 @@
 class Api::V1::AuthenticationController < ApiController
-  skip_before_action :authenticate_user!, only: [:create]
-  def create
-    user = User.find_by(email: params[:email])
-    puts user
-    if user&.valid_password?(params[:password])
-      render json: { token: JsonWebToken.encode(sub: user.id) }
+  def authenticate_user
+    user = User.find_for_database_authentication(email: params[:email])
+    if user.valid_password?(params[:password])
+      render json: payload(user)
     else
-      render json: { errors: 'invalid' }
+      render json: {errors: ['Invalid Username/Password']}, status: :unauthorized
     end
   end
-  def fetch
-    render json: current_user
+
+  private
+
+  def payload(user)
+    return nil unless user and user.id
+    {
+        auth_token: JsonWebToken.encode({user_id: user.id}),
+        user: {id: user.id, email: user.email}
+    }
   end
 end
