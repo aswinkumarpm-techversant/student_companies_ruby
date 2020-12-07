@@ -6,6 +6,11 @@ Rails.application.routes.draw do
       get 'home/index'
       post :auth, to: 'authentication#create'
       get  '/auth' => 'authentication#fetch'
+
+      resources :users, only: [:create]
+
+      post '/sign_in' , to:'users#login'
+      get '/auto_login' => 'users#auto_login'
     end
     namespace :v2 do
       # Things yet to come
