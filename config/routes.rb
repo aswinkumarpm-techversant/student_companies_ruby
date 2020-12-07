@@ -3,6 +3,13 @@ Rails.application.routes.draw do
   # devise_for :users, controllers: { registrations: 'registrations' }
   namespace :api do
     namespace :v1 do
+      resources :students do
+        resources :companies
+      end
+
+      resources :cash_management_tables
+      resources :cash_in_histories
+      resources :cash_out_histories
       get 'home', to: 'home#index'
       post 'auth_user', to: 'authentication#authenticate_user'
 
