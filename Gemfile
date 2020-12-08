@@ -39,6 +39,9 @@ gem 'rack-cors'
 gem 'pry', '~> 0.13.1'
 gem 'sidekiq'
 
+gem 'whenever', require: false
+
+
 
 
 

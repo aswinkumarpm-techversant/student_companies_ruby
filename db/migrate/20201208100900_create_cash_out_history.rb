@@ -7,6 +7,7 @@ class CreateCashOutHistory < ActiveRecord::Migration[6.0]
       t.decimal :services_amount , precision: 15, scale: 2
       t.decimal :operating_expenses_amount ,precision: 15, scale: 2
       t.decimal :investments_amount ,precision: 15, scale: 2
+      t.string :status, :default => "Need to be calculated"
       t.timestamps
     end
   end

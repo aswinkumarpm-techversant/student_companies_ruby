@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_100900) do
     t.decimal "convertible_note_amount", precision: 15, scale: 2
     t.decimal "bank_debt_amount", precision: 15, scale: 2
     t.decimal "other_amount", precision: 15, scale: 2
+    t.string "status", default: "Need to be calculated"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["cash_management_table_id"], name: "index_cash_in_histories_on_cash_management_table_id"
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_100900) do
     t.decimal "services_amount", precision: 15, scale: 2
     t.decimal "operating_expenses_amount", precision: 15, scale: 2
     t.decimal "investments_amount", precision: 15, scale: 2
+    t.string "status", default: "Need to be calculated"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["cash_management_table_id"], name: "index_cash_out_histories_on_cash_management_table_id"
