@@ -45,12 +45,12 @@ class Api::V1::StudentsController < ApiController
   def get_company_details
     student_companies = Company.where(student_id: params[:student_id])
     student_cash_management_tables = CashManagementTable.where(company_id: student_companies.pluck(:id))
-    student_cash_in_history = CashInHistory.where(company_id: student_companies.pluck(:id))
-    student_cash_out_history = CashOutHistory.where(company_id: student_companies.pluck(:id))
+    student_cash_in_histories = CashInHistory.where(company_id: student_companies.pluck(:id))
+    student_cash_out_histories = CashOutHistory.where(company_id: student_companies.pluck(:id))
     render json: {user:@current_user, student_companies: student_companies,
                   student_cash_management_tables: student_cash_management_tables,
-                  student_cash_in_history: student_cash_in_history,
-                  student_cash_out_history: student_cash_out_history,
+                  student_cash_in_histories: student_cash_in_histories,
+                  student_cash_out_histories: student_cash_out_histories,
 
     }
   end

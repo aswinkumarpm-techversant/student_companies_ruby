@@ -40,6 +40,15 @@ gem 'pry', '~> 0.13.1'
 gem 'sidekiq'
 
 
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'jsonapi-rspec'
+  #...
+end
+
+
 
 
 
