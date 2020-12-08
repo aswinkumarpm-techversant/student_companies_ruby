@@ -50,7 +50,7 @@ class Api::V1::CashManagementTablesController < ApiController
 
   # Only allow a trusted parameter “white list” through.
   def cash_management_table_params
-    params.require(:cash_management_table).permit(:cash_in, :cash_out, :initial_cash, :company_id)
+    params.require(:cash_management_table).permit(:cash_in, :cash_out, :initial_cash, :student_company_id)
   end
 end
 

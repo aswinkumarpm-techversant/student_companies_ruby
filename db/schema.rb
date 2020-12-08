@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_06_050001) do
+ActiveRecord::Schema.define(version: 2020_12_08_100900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,13 +28,13 @@ ActiveRecord::Schema.define(version: 2020_12_06_050001) do
   end
 
   create_table "cash_management_tables", force: :cascade do |t|
-    t.bigint "company_id"
+    t.bigint "student_company_id"
     t.string "cash_in"
     t.string "cash_out"
     t.string "initial_cash"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_id"], name: "index_cash_management_tables_on_company_id"
+    t.index ["student_company_id"], name: "index_cash_management_tables_on_student_company_id"
   end
 
   create_table "cash_out_histories", force: :cascade do |t|
@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 2020_12_06_050001) do
     t.string "name"
     t.string "country"
     t.string "currency"
-    t.integer "student_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -62,6 +61,15 @@ ActiveRecord::Schema.define(version: 2020_12_06_050001) do
     t.string "jti", null: false
     t.datetime "exp", null: false
     t.index ["jti"], name: "index_jwt_denylist_on_jti"
+  end
+
+  create_table "student_companies", force: :cascade do |t|
+    t.bigint "company_id"
+    t.bigint "student_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_student_companies_on_company_id"
+    t.index ["student_id"], name: "index_student_companies_on_student_id"
   end
 
   create_table "users", force: :cascade do |t|
