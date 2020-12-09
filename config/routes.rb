@@ -3,10 +3,8 @@ Rails.application.routes.draw do
   # devise_for :users, controllers: { registrations: 'registrations' }
   namespace :api do
     namespace :v1 do
-      resources :students do
-        resources :student_companies
-      end
-
+      resources :students
+      resources :student_companies
       resources :cash_management_tables
       resources :companies
       resources :cash_in_histories
