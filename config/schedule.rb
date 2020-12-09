@@ -5,7 +5,7 @@
 
 # Example:
 #
-# set :output, "/path/to/my/cron_log.log"
+set :output, "log/cron.log"
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -17,8 +17,13 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
-every '0 0 L * *' do
-  runner "CashManagementTable.calculate_initial_cash"
+every 1.minute do
+  rake 'sample:test'
+end
+
+
+every '0 0 28-31 * *' do
+  runner "MonthlyCalculation.calculate_initial_cash"
 end
 
 # Learn more: http://github.com/javan/whenever
