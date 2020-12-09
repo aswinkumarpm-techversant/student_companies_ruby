@@ -41,6 +41,19 @@ class Api::V1::StudentCompaniesController < ApiController
 
   end
 
+  def get_company_details
+    student_companies = StudentCompany.where(student_id: params[:student_id], company_id: params[:company_id])
+    student_cash_management_tables = CashManagementTable.find_by(student_company_id: student_companies.pluck(:id))
+    student_cash_in_histories = CashInHistory.where(cash_management_table_id: student_cash_management_tables.id)
+    student_cash_out_histories = CashOutHistory.where(cash_management_table_id: student_cash_management_tables.id)
+    render json: {user:@current_user, student_companies: student_companies,
+                  student_cash_management_tables: student_cash_management_tables,
+                  student_cash_in_histories: student_cash_in_histories,
+                  student_cash_out_histories: student_cash_out_histories,
+
+    }
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

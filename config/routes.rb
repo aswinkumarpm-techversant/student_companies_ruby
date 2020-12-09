@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
       post '/sign_in' , to:'users#login'
       get '/auto_login' => 'users#auto_login'
+      get '/get_company_details' => 'student_companies#get_company_details'
     end
     namespace :v2 do
       # Things yet to come
