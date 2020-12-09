@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :students do
-        resources :companies
+        resources :student_companies
       end
 
       resources :cash_management_tables
+      resources :companies
       resources :cash_in_histories
       resources :cash_out_histories
       get 'home', to: 'home#index'
