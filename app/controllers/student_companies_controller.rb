@@ -1,4 +1,4 @@
-class StudentCompaniesController < ApiController
+class StudentCompaniesController < ApplicationController
   before_action :authenticate_user!
 
   # skip_before_action :authenticate_user!, only: [:action_to_skip_here]
@@ -7,19 +7,28 @@ class StudentCompaniesController < ApiController
 
   def index
     @student_companies = StudentCompany.all
-    render json: @student_companies
+  end
+
+  def fetch_current_user_companies
+    @student_companies = StudentCompany.where(student_id: current_user.id)
   end
 
   def show
-    render json: @student_company
+    @student_company
+  end
+
+  def new
+    @student_company = StudentCompany.new
+
   end
 
   def create
-    @student_company = StudentCompany.new(student_company_params)
+    @student_company = StudentCompany.create(student_id: current_user.id, company_id: params['student_company']['company_id'])
     if @student_company.save
-      render json: @student_company, status: :created
+      flash[:notice] = "Student Company was successfully created"
+      redirect_to @student_company
     else
-      render json: @student_company.errors, status: 400
+      render 'new'
     end
   end
 
@@ -62,9 +71,9 @@ class StudentCompaniesController < ApiController
   end
 
   # Only allow a trusted parameter “white list” through.
-  def student_company_params
-    params.require(:student_company).permit(:company_id, :student_id)
-  end
+  # def student_company_params
+  #   params.require(:student_company).permit(:company_id, :student_id)
+  # end
 end
 
 

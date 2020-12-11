@@ -18,10 +18,27 @@
         <li class=""><a href="#">CONTACT <span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Main Items <span class="caret"></span></a>
-          <ul class="dropdown-menu">
+          <% if user_signed_in? %>
+
+        <% if current_user.role == 'teacher' %>
+
+        <ul class="dropdown-menu">
             <li><%= link_to "Companies", companies_path, class: "navbar-link" %></li>
             <li role="separator" class="divider"></li>
+            <li><%= link_to "Students", students_path, class: "navbar-link" %></li>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to "Student Companies", student_companies_path, class: "navbar-link" %></li>
+            <li role="separator" class="divider"></li>
+
           </ul>
+            <% else %>
+              <li><%= link_to "Student Companies", fetch_current_user_companies_path, class: "navbar-link" %></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "Cash Management Tables", cash_management_tables_path, class: "navbar-link" %></li>
+
+        <% end %>
+          <% end %>
+
         </li>
 
       </ul>

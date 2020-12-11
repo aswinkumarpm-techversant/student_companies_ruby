@@ -6,12 +6,21 @@ class CashManagementTablesController < ApplicationController
   before_action :set_cash_management_table, only: [:show, :update, :destroy]
 
   def index
-    @cash_management_tables = CashManagementTable.all
+    student_companies = StudentCompany.where(student_id: current_user.id)
+    puts student_companies
+    @cash_management_tables = CashManagementTable.where(student_company_id: student_companies.pluck(:id))
+    puts "aswin", @cash_management_tables
     render json: @cash_management_tables
+
   end
 
   def show
-    render json: @cash_management_table
+    @cash_management_table
+  end
+
+  def new
+    @cash_management_table = CashManagementTable.new
+
   end
 
   def create

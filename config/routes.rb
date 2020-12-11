@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :cash_out_histories
   get 'home', to: 'home#index'
   get '/get_company_details' => 'student_companies#get_company_details'
+  get '/fetch_current_user_companies' => 'student_companies#fetch_current_user_companies'
 
 
   namespace :api do

@@ -1,0 +1,18 @@
+<h1>Listing My Companies</h1>
+
+<%= link_to 'New Student Company', new_student_company_path, class: "btn btn-xs btn-success" %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Company ID</th>
+    <th></th>
+  </tr>
+
+  <% @student_companies.each do |company| %>
+    <tr>
+      <td><%= company.id %></td>
+      <td><%= Company.find(company.company_id).name %></td>
+    </tr>
+  <% end %>
+</table>

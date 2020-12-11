@@ -1,0 +1,28 @@
+<%= form_with model: @student_company, local: true do |form| %>
+
+  <% if @student_company.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@student_company.errors.count, "error") %> prohibited
+        this student company from being saved:
+      </h2>
+      <ul>
+        <% @student_company.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= form.label :company_name %><br />
+    <%= form.select :company_id, options_for_select(Company.all.map{|s|[s.name, s.id]}) %>
+  </div>
+
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
