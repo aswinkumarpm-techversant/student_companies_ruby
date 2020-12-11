@@ -21,5 +21,9 @@ class CashManagementTable < ActiveRecord::Base
   #
   #   #table creation to save all the datas for archive
   #   end
+  #
+  def print_test
+    puts "aswin, hi"
+  end
 end
 

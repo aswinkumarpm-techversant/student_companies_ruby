@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
   root 'pages#index'
-  # devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users
+  resources :students
+  resources :student_companies
+  resources :cash_management_tables
+  resources :companies
+  resources :cash_in_histories
+  resources :cash_out_histories
+  get 'home', to: 'home#index'
+  get '/get_company_details' => 'student_companies#get_company_details'
+
+
   namespace :api do
     namespace :v1 do
       resources :students

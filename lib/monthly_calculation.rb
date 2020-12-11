@@ -23,6 +23,10 @@ module MonthlyCalculation
 
   end
 
+  def print_aswin
+    puts "aswin, hi"
+  end
+
 
   class_methods do
     def monthly_parms(id)

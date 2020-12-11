@@ -6,6 +6,8 @@
 # Example:
 #
 set :output, "log/cron.log"
+set :environment, "development"
+
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -18,7 +20,12 @@ set :output, "log/cron.log"
 # end
 
 every 1.minute do
-  rake 'sample:test'
+  rake "sample:test"
+  runner "CashManagementTable.print_test"
+end
+
+every 1.minute do
+  rake 'whenever_call'
 end
 
 
