@@ -1,13 +1,9 @@
 
-<p>
-  <strong>First Name:</strong>
-  <%= @student_company.student_id %>
-</p>
 
-<p>
-  <strong>Last Name:</strong>
-  <%= @student_company.company_id %>
-</p>
+<!--<p>-->
+<!--  <strong>Last Name:</strong>-->
+  <%#= @student_company.company_id %>
+<!--</p>-->
 
 <% if @cash_management_table.nil? %>
 
@@ -15,18 +11,18 @@
 
 <%  else  %>
 
-<table>
-  <tr>
-    <th>ID</th>
-    <th></th>
-  </tr>
+<!--<table>-->
+<!--  <tr>-->
+<!--    <th>ID</th>-->
+<!--    <th></th>-->
+<!--  </tr>-->
 
-  <tr>
-    <td><%=  @cash_management_table.id  %></td>
-    <td><%= link_to 'Show', cash_management_table_path(@cash_management_table.id),  class: "btn btn-xs btn-success" %></td>
+<!--  <tr>-->
+<!--    <td><%#=  @cash_management_table.id  %></td>-->
+<!--    <td><%#= link_to 'Show', cash_management_table_path(@cash_management_table.id),  class: "btn btn-xs btn-success" %></td>-->
 
-  </tr>
-</table>
+<!--  </tr>-->
+<!--</table>-->
 
 
   <br>
