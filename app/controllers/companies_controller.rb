@@ -11,6 +11,12 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   def show
     @company
+    @student_companies = StudentCompany.where(company_id: @company.id)
+    @cash_management_tables = CashManagementTable.where(student_company_id: @student_companies.pluck(:id))
+    unless @cash_management_tables.nil?
+      @cash_in_histories = CashInHistory.where(cash_management_table_id: @cash_management_tables.pluck(:id))
+      @cash_out_histories = CashOutHistory.where(cash_management_table_id: @cash_management_tables.pluck(:id))
+    end
   end
 
   def new

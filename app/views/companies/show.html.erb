@@ -16,4 +16,123 @@
 </p>
 
 </div>
+
+
+  <% if @cash_in_histories.empty? %>
+
+    <table class="table table-bordered">
+      <tr>
+        <th>ID</th>
+        <th>Revenues Amount</th>
+        <th>Equity Amount</th>
+        <th>Convertible Note Amount</th>
+        <th>Bank Debt Amount</th>
+        <th>Other Amount</th>
+        <th>Status</th>
+      </tr>
+
+      <tr>
+        <td>No Data</td>
+        <td>No Data</td>
+        <td>No Data</td>
+        <td>No Data</td>
+        <td>No Data</td>
+        <td>No Data</td>
+        <td>No Data</td>
+      </tr>
+    </table>
+  <%  else  %>
+
+
+    <table class="table table-bordered">
+      <tr>
+        <th>ID</th>
+        <th>Revenues Amount</th>
+        <th>Equity Amount</th>
+        <th>Convertible Note Amount</th>
+        <th>Bank Debt Amount</th>
+        <th>Other Amount</th>
+        <th>Status</th>
+      </tr>
+
+      <% @cash_in_histories.each do |history| %>
+        <tr>
+          <td><%= history.id %></td>
+          <td><%= history.revenues_amount %></td>
+          <td><%= history.equity_amount %></td>
+          <td><%= history.convertible_note_amount %></td>
+          <td><%= history.bank_debt_amount %></td>
+          <td><%= history.other_amount %></td>
+          <td><%= history.status %></td>
+
+
+
+
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+
+
+  <br>
+
+  <% if @cash_out_histories.empty? %>
+
+    <table class="table table-bordered">
+      <tr>
+        <th>ID</th>
+        <th>Cogs Amount</th>
+        <th>Employees Amount</th>
+        <th>Services Amount</th>
+        <th>Operating Expenses Amount</th>
+        <th>Investment Amount</th>
+        <th>Status</th>
+      </tr>
+
+      <tr>
+        <td>No Data</td>
+        <td>No Data</td>
+        <td>No Data</td>
+        <td>No Data</td>
+        <td>No Data</td>
+        <td>No Data</td>
+        <td>No Data</td>
+      </tr>
+    </table>
+
+  <%  else  %>
+
+
+
+    <table class="table table-bordered">
+      <tr>
+        <th>ID</th>
+        <th>Cogs Amount</th>
+        <th>Employees Amount</th>
+        <th>Services Amount</th>
+        <th>Operating Expenses Amount</th>
+        <th>Investment Amount</th>
+        <th>Status</th>
+      </tr>
+
+      <% @cash_out_histories.each do |history| %>
+        <tr>
+          <td><%= history.id %></td>
+          <td><%= history.cogs_amount %></td>
+          <td><%= history.employees_amount %></td>
+          <td><%= history.services_amount %></td>
+          <td><%= history.operating_expenses_amount %></td>
+          <td><%= history.investments_amount %></td>
+          <td><%= history.status %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+
+
+
+
+
+
+
 <%= link_to 'Back', companies_path,  class: "btn btn-xs btn-danger" %>
