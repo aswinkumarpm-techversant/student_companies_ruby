@@ -1,0 +1,52 @@
+<%= form_with model: @cash_in_history, local: true do |form| %>
+
+  <% if @cash_in_history.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@cash_in_history.errors.count, "error") %> prohibited
+        this History from being saved:
+      </h2>
+      <ul>
+        <% @cash_in_history.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :revenues_amount %><br>
+    <%= form.text_field :revenues_amount %>
+    <%= form.hidden_field :cash_management_table_id, value: @cash_management_table_id %>
+
+  </p>
+
+  <p>
+    <%= form.label :equity_amount %><br>
+    <%= form.text_field :equity_amount %>
+
+  </p>
+  <p>
+    <%= form.label :convertible_note_amount %><br>
+    <%= form.text_field :convertible_note_amount %>
+
+  </p>
+
+  <p>
+    <%= form.label :bank_debt_amount %><br>
+    <%= form.text_field :bank_debt_amount %>
+
+  </p>  <p>
+    <%= form.label :other_amount %><br>
+    <%= form.text_field :other_amount %>
+
+  </p>
+
+
+
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>

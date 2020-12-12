@@ -1,0 +1,32 @@
+
+<p>
+  <strong>First Name:</strong>
+  <%= @student_company.student_id %>
+</p>
+
+<p>
+  <strong>Last Name:</strong>
+  <%= @student_company.company_id %>
+</p>
+
+<% if @cash_management_table.nil? %>
+
+  <%= link_to 'Create Cash Management', new_cash_management_table_path(:student_company_id => @student_company.id), class: "btn btn-xs btn-success" %>
+
+<%  else  %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th></th>
+  </tr>
+
+  <tr>
+    <td><%=  @cash_management_table.id  %></td>
+    <td><%= link_to 'Show', cash_management_table_path(@cash_management_table.id),  class: "btn btn-xs btn-success" %></td>
+
+  </tr>
+</table>
+<% end %>
+
+<%= link_to 'Back', fetch_current_user_companies_path %>

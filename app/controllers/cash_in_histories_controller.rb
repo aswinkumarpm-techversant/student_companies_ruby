@@ -3,7 +3,7 @@ class CashInHistoriesController < ApplicationController
 
   # skip_before_action :authenticate_user!, only: [:action_to_skip_here]
 
-  before_action :set_cash_in_history, only: [:show, :update, :destroy]
+  before_action :set_cash_in_history, only: [:show, :update, :destroy, :edit]
 
   def index
     @cash_in_histories = CashInHistory.all
@@ -14,29 +14,53 @@ class CashInHistoriesController < ApplicationController
     render json: @cash_in_history
   end
 
+  def new
+    @cash_in_history = CashInHistory.new
+
+  end
+
+
+  def edit
+    @cash_management_table_id = params[:cash_management_table_id]
+    @cash_in_history
+  end
+
+  def edit_cash_in_history
+    @cash_management_table_id = params[:cash_management_table_id]
+    @cash_in_history
+  end
+
+
   def create
     @cash_in_history = CashInHistory.new(cash_in_history_params)
     if @cash_in_history.save
-      render json: @cash_in_history, status: :created
+      flash[:notice] = "CashHistory was successfully created"
+      redirect_to fetch_current_user_companies_path
     else
-      render json: @cash_in_history.errors, status: 400
+      render 'new'
+    end
+  end
+
+  def update_cash_in_history
+    if @cash_in_history.update(cash_in_history_params)
+      redirect_to cash_management_table_path
+    else
+      render 'edit'
     end
   end
 
   def update
     if @cash_in_history.update(cash_in_history_params)
-      render json: {message: "Cash IN History Updated Successfully"}, status: 200
+      redirect_to fetch_current_user_companies_path
     else
-      render json: @cash_in_history.errors, status: 400
+      render 'edit'
     end
   end
 
   def destroy
     if @cash_in_history
       @cash_in_history.destroy
-      render json: {message: "Cash IN History Deleted Successfully"}, status: 200
-    else
-      render json: {error:"Unable  to Delete" }, status: 400
+      redirect_to fetch_current_user_companies_path
     end
 
   end

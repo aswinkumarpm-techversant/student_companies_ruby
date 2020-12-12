@@ -1,0 +1,30 @@
+<%= form_with model: @cash_management_table, local: true do |form| %>
+
+  <% if @cash_management_table.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@cash_management_table.errors.count, "error") %> prohibited
+        this table from being saved:
+      </h2>
+      <ul>
+        <% @cash_management_table.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :initial_cash %><br>
+    <%= form.text_field :initial_cash %>
+    <%= form.hidden_field :student_company_id, value: @student_company_id %>
+
+  </p>
+
+
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>

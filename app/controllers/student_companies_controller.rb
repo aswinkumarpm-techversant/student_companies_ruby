@@ -15,6 +15,7 @@ class StudentCompaniesController < ApplicationController
 
   def show
     @student_company
+    @cash_management_table = CashManagementTable.find_by(student_company_id: @student_company.id)
   end
 
   def new

@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   get 'home', to: 'home#index'
   get '/get_company_details' => 'student_companies#get_company_details'
   get '/fetch_current_user_companies' => 'student_companies#fetch_current_user_companies'
-
-
   namespace :api do
     namespace :v1 do
       resources :students
@@ -28,6 +26,8 @@ Rails.application.routes.draw do
       post '/sign_in' , to:'users#login'
       get '/auto_login' => 'users#auto_login'
       get '/get_company_details' => 'student_companies#get_company_details'
+
+
     end
     namespace :v2 do
       # Things yet to come

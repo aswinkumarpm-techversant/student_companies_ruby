@@ -3,7 +3,7 @@ class CashOutHistoriesController < ApplicationController
 
   # skip_before_action :authenticate_user!, only: [:action_to_skip_here]
 
-  before_action :set_cash_out_history, only: [:show, :update, :destroy]
+  before_action :set_cash_out_history, only: [:show, :update, :destroy, :edit]
 
   def index
     @cash_out_histories = CashOutHistory.all
@@ -14,30 +14,46 @@ class CashOutHistoriesController < ApplicationController
     render json: @cash_out_history
   end
 
+
+  def new
+    @cash_management_table_id = params[:cash_management_table_id]
+    @cash_out_history = CashOutHistory.new
+
+  end
+
+
+  def edit
+    @cash_management_table_id = params[:cash_management_table_id]
+    @cash_out_history
+  end
+
+
+
+
   def create
     @cash_out_history = CashOutHistory.new(cash_out_history_params)
     if @cash_out_history.save
-      render json: @cash_out_history, status: :created
+      flash[:notice] = "CashOutHistory was successfully created"
+      redirect_to fetch_current_user_companies_path
     else
-      render json: @cash_out_history.errors, status: 400
+      render 'new'
     end
   end
 
   def update
     if @cash_out_history.update(cash_out_history_params)
-      render json: {message: "Cash OUT History Updated Successfully"}, status: 200
+      redirect_to fetch_current_user_companies_path
     else
-      render json: @cash_out_history.errors, status: 400
+      render 'edit'
     end
   end
 
   def destroy
     if @cash_out_history
       @cash_out_history.destroy
-      render json: {message: "Cash OUT History Deleted Successfully"}, status: 200
-    else
-      render json: {error:"Unable  to Delete" }, status: 400
+      redirect_to fetch_current_user_companies_path
     end
+
 
   end
   private
