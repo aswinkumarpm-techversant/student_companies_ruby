@@ -17,7 +17,7 @@
 
   <div class="field">
     <%= form.label :company_name %><br />
-    <%= form.select :company_id, options_for_select(Company.all.map{|s|[s.name, s.id]}) %>
+    <%= form.select :company_id, options_for_select(Company.where.not(id: StudentCompany.where(student_id: current_user.id).pluck(:company_id)).map{|s|[s.name, s.id]}) %>
   </div>
 
 

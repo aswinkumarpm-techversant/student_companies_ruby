@@ -3,7 +3,7 @@ class StudentCompaniesController < ApplicationController
 
   # skip_before_action :authenticate_user!, only: [:action_to_skip_here]
 
-  before_action :set_student_company, only: [:show, :update, :destroy]
+  before_action :set_student_company, only: [:show, :update, :destroy, :edit]
 
   def index
     @student_companies = StudentCompany.all
@@ -16,12 +16,22 @@ class StudentCompaniesController < ApplicationController
   def show
     @student_company
     @cash_management_table = CashManagementTable.find_by(student_company_id: @student_company.id)
+    unless @cash_management_table.nil?
+    @cash_in_histories = CashInHistory.where(cash_management_table_id: @cash_management_table.id)
+    @cash_out_histories = CashOutHistory.where(cash_management_table_id: @cash_management_table.id)
+    end
   end
 
   def new
     @student_company = StudentCompany.new
 
   end
+
+
+  def edit
+    @student_company
+  end
+
 
   def create
     @student_company = StudentCompany.create(student_id: current_user.id, company_id: params['student_company']['company_id'])
@@ -35,19 +45,18 @@ class StudentCompaniesController < ApplicationController
 
   def update
     if @student_company.update(student_params)
-      render json: {message: "Student Company Updated Successfully"}, status: 200
+      redirect_to cash_management_table_path
     else
-      render json: @student_company.errors, status: 400
+      render 'edit'
     end
   end
 
   def destroy
     if @student_company
       @student_company.destroy
-      render json: {message: "Student Company Deleted Successfully"}, status: 200
-    else
-      render json: {error: "Unable  to Delete"}, status: 400
+      redirect_to fetch_current_user_companies_path
     end
+
 
   end
 

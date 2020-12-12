@@ -15,6 +15,7 @@ class CashInHistoriesController < ApplicationController
   end
 
   def new
+    @cash_management_table_id = params[:cash_management_table_id]
     @cash_in_history = CashInHistory.new
 
   end
@@ -25,10 +26,7 @@ class CashInHistoriesController < ApplicationController
     @cash_in_history
   end
 
-  def edit_cash_in_history
-    @cash_management_table_id = params[:cash_management_table_id]
-    @cash_in_history
-  end
+
 
 
   def create
@@ -41,13 +39,7 @@ class CashInHistoriesController < ApplicationController
     end
   end
 
-  def update_cash_in_history
-    if @cash_in_history.update(cash_in_history_params)
-      redirect_to cash_management_table_path
-    else
-      render 'edit'
-    end
-  end
+
 
   def update
     if @cash_in_history.update(cash_in_history_params)

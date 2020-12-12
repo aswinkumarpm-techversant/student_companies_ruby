@@ -14,6 +14,9 @@
       <td><%= company.id %></td>
       <td><%= Company.find(company.company_id).name %></td>
       <td><%= link_to 'Show', student_company_path(company),  class: "btn btn-xs btn-success" %></td>
+            <td><%= link_to 'Edit', edit_student_company_path(company),  class: "btn btn-xs btn-primary" %></td>
+            <td><%= link_to 'Delete', student_company_path(company), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
+
 
     </tr>
   <% end %>
