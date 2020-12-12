@@ -5,16 +5,16 @@
 <table class="table table-bordered" style="width: 300px; margin: auto">
   <tr>
     <th>ID</th>
-    <th>Student ID</th>
-    <th>Company ID</th>
+    <th>Student Name</th>
+    <th>Company Name</th>
     <th></th>
   </tr>
 
   <% @student_companies.each do |company| %>
     <tr>
       <td><%= company.id %></td>
-      <td><%= Student.find(company.student_id).first_name %></td>
-      <td><%= Company.find(company.company_id).name %></td>
+      <td><%= Student.find_by(id: company.student_id).first_name %></td>
+      <td><%= Company.find_by(id: company.company_id) %></td>
 <!--      <td><%#= link_to 'Edit', edit_student_company_path(company),  class: "btn btn-xs btn-primary" %></td>-->
 <!--      <td><%#= link_to 'Delete', student_company_path(company), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>-->
 
