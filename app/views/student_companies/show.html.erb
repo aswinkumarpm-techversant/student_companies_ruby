@@ -37,15 +37,6 @@
     <%= @cash_management_table.initial_cash %>
   </p>
 
-  <p>
-    <strong>Cash In:</strong>
-    <%= @cash_management_table.cash_in %>
-  </p>
-
-  <p>
-    <strong>Cash Out:</strong>
-    <%= @cash_management_table.cash_out %>
-  </p>
   <%= link_to 'Create Cash In History of this day', new_cash_in_history_path(:cash_management_table_id => @cash_management_table.id), class: "btn btn-xs btn-success" %>
   <%= link_to 'Create Cash OUT History of this day', new_cash_out_history_path(:cash_management_table_id => @cash_management_table.id), class: "btn btn-xs btn-success" %>
 
@@ -65,7 +56,7 @@
   <%  else  %>
 
 
-    <table>
+    <table class="table table-bordered">
       <tr>
         <th>ID</th>
         <th>Revenues Amount</th>
@@ -73,7 +64,8 @@
         <th>Convertible Note Amount</th>
         <th>Bank Debt Amount</th>
         <th>Other Amount</th>
-        <th></th>
+        <th>Status</th>
+        <th>Actions</th>
       </tr>
 
       <% @cash_in_histories.each do |history| %>
@@ -84,9 +76,10 @@
           <td><%= history.convertible_note_amount %></td>
           <td><%= history.bank_debt_amount %></td>
           <td><%= history.other_amount %></td>
+          <td><%= history.status %></td>
 
-          <td><%= link_to 'Edit', edit_cash_in_history_path(history.id, :cash_management_table_id => @cash_management_table.id),  class: "btn btn-xs btn-primary" %></td>
-          <td><%= link_to 'Delete', cash_in_history_path(history.id, :cash_management_table_id => @cash_management_table.id),
+          <td><%= link_to 'Edit', edit_cash_in_history_path(history.id, :cash_management_table_id => @cash_management_table.id),  class: "btn btn-xs btn-primary" %>
+          <%= link_to 'Delete', cash_in_history_path(history.id, :cash_management_table_id => @cash_management_table.id),
                           method: :delete,
                           data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
 
@@ -115,7 +108,7 @@
 
 
 
-    <table>
+    <table class="table table-bordered">
       <tr>
         <th>ID</th>
         <th>Cogs Amount</th>
@@ -123,7 +116,8 @@
         <th>Services Amount</th>
         <th>Operating Expenses Amount</th>
         <th>Investment Amount</th>
-        <th></th>
+        <th>Status</th>
+        <th>Actions</th>
       </tr>
 
       <% @cash_out_histories.each do |history| %>
@@ -134,9 +128,10 @@
           <td><%= history.services_amount %></td>
           <td><%= history.operating_expenses_amount %></td>
           <td><%= history.investments_amount %></td>
+          <td><%= history.status %></td>
 
-          <td><%= link_to 'Edit', edit_cash_out_history_path(history.id,  :cash_management_table_id => @cash_management_table.id),  class: "btn btn-xs btn-primary" %></td>
-          <td><%= link_to 'Delete', cash_out_history_path(history.id,  :cash_management_table_id => @cash_management_table.id),
+          <td><%= link_to 'Edit', edit_cash_out_history_path(history.id,  :cash_management_table_id => @cash_management_table.id),  class: "btn btn-xs btn-primary" %>
+<%= link_to 'Delete', cash_out_history_path(history.id,  :cash_management_table_id => @cash_management_table.id),
                           method: :delete,
                           data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
 

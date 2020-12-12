@@ -24,13 +24,14 @@ every 1.minute do
   runner "CashManagementTable.print_test"
 end
 
-every 1.minute do
-  rake 'whenever_call'
-end
+# every 1.minute do
+# end
 
 
 every '0 0 28-31 * *' do
   runner "MonthlyCalculation.calculate_initial_cash"
+  rake 'whenever_call'
+
 end
 
 # Learn more: http://github.com/javan/whenever
