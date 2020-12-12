@@ -28,24 +28,35 @@
   <br>
 
 
-  <p>
+  <p style="text-align: center">
     <strong>Initial Cash:</strong>
     <%= @cash_management_table.initial_cash %>
   </p>
 
-  <%= link_to 'Create Cash In History of this day', new_cash_in_history_path(:cash_management_table_id => @cash_management_table.id), class: "btn btn-xs btn-success" %>
-  <%= link_to 'Create Cash OUT History of this day', new_cash_out_history_path(:cash_management_table_id => @cash_management_table.id), class: "btn btn-xs btn-success" %>
+  <p style="text-align: center"><%= link_to 'Create Cash In History of this day', new_cash_in_history_path(:cash_management_table_id => @cash_management_table.id), class: "btn btn-xs btn-success" %></p>
 
+  <br>
 
   <% if @cash_in_histories.empty? %>
 
-    <table>
+    <table class="table table-bordered">
       <tr>
         <th>ID</th>
-        <th></th>
+        <th>Revenues Amount</th>
+        <th>Equity Amount</th>
+        <th>Convertible Note Amount</th>
+        <th>Bank Debt Amount</th>
+        <th>Other Amount</th>
+        <th>Status</th>
       </tr>
 
       <tr>
+        <td>No Data</td>
+        <td>No Data</td>
+        <td>No Data</td>
+        <td>No Data</td>
+        <td>No Data</td>
+        <td>No Data</td>
         <td>No Data</td>
       </tr>
     </table>
@@ -86,16 +97,30 @@
     </table>
   <% end %>
 
+  <p style="text-align: center"><%= link_to 'Create Cash OUT History of this day', new_cash_out_history_path(:cash_management_table_id => @cash_management_table.id), class: "btn btn-xs btn-success" %></p>
+
+  <br>
 
   <% if @cash_out_histories.empty? %>
 
-    <table>
+    <table class="table table-bordered">
       <tr>
         <th>ID</th>
-        <th></th>
+        <th>Cogs Amount</th>
+        <th>Employees Amount</th>
+        <th>Services Amount</th>
+        <th>Operating Expenses Amount</th>
+        <th>Investment Amount</th>
+        <th>Status</th>
       </tr>
 
       <tr>
+        <td>No Data</td>
+        <td>No Data</td>
+        <td>No Data</td>
+        <td>No Data</td>
+        <td>No Data</td>
+        <td>No Data</td>
         <td>No Data</td>
       </tr>
     </table>
@@ -145,4 +170,4 @@
 
 
 
-<%= link_to 'Back', fetch_current_user_companies_path %>
+<%= link_to 'Back', fetch_current_user_companies_path,  class: "btn btn-xs btn-danger" %>

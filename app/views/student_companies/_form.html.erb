@@ -1,4 +1,7 @@
-<%= form_with model: @student_company, local: true do |form| %>
+
+<div style="text-align: center">
+
+  <%= form_with model: @student_company, local: true do |form| %>
 
   <% if @student_company.errors.any? %>
     <div id="error_explanation">
@@ -26,3 +29,4 @@
   </p>
 
 <% end %>
+</div>

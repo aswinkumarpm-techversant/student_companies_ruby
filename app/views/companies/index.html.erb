@@ -1,22 +1,26 @@
 
-<h1>Listing Companies</h1>
+<h1 style="text-align: center">Listing Companies</h1>
 
-<%= link_to 'New Company', new_company_path, class: "btn btn-xs btn-success" %>
+<p style="text-align: center"><%= link_to 'New Company', new_company_path, class: "btn btn-xs btn-success" %></p>
 
-<table>
+<table class="table table-bordered" style="width: 300px; margin: auto">
   <tr>
     <th>Name</th>
-    <th></th>
+    <th>Currency</th>
+    <th>Country</th>
+    <th>Actions</th>
   </tr>
 
   <% @companies.each do |company| %>
     <tr>
       <td><%= company.name %></td>
-      <td><%= link_to 'Show', company_path(company),  class: "btn btn-xs btn-success" %></td>
-      <td><%= link_to 'Edit', edit_company_path(company),  class: "btn btn-xs btn-primary" %></td>
-      <td><%= link_to 'Delete', company_path(company),
+      <td><%= company.currency %></td>
+      <td><%= company.country %></td>
+<!--      <td><%#= link_to 'Show', company_path(company),  class: "btn btn-xs btn-success" %>-->
+      <td><%= link_to 'Edit', edit_company_path(company),  class: "btn btn-xs btn-primary" %>
+      <%= link_to 'Delete', company_path(company),
                       method: :delete,
-                      data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
+                  data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
 
     </tr>
   <% end %>
