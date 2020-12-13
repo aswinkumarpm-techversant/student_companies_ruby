@@ -23,6 +23,7 @@
     <table class="table table-bordered">
       <tr>
         <th>ID</th>
+        <th>Student Name</th>
         <th>Revenues Amount</th>
         <th>Equity Amount</th>
         <th>Convertible Note Amount</th>
@@ -32,6 +33,7 @@
       </tr>
 
       <tr>
+        <td>No Data</td>
         <td>No Data</td>
         <td>No Data</td>
         <td>No Data</td>
@@ -47,6 +49,7 @@
     <table class="table table-bordered">
       <tr>
         <th>ID</th>
+        <th>Student Name</th>
         <th>Revenues Amount</th>
         <th>Equity Amount</th>
         <th>Convertible Note Amount</th>
@@ -58,6 +61,7 @@
       <% @cash_in_histories.each do |history| %>
         <tr>
           <td><%= history.id %></td>
+          <td><%= history.cash_management_table.student_company.student.first_name %></td>
           <td><%= history.revenues_amount %></td>
           <td><%= history.equity_amount %></td>
           <td><%= history.convertible_note_amount %></td>
@@ -81,6 +85,7 @@
     <table class="table table-bordered">
       <tr>
         <th>ID</th>
+        <th>Student Name</th>
         <th>Cogs Amount</th>
         <th>Employees Amount</th>
         <th>Services Amount</th>
@@ -90,6 +95,7 @@
       </tr>
 
       <tr>
+        <td>No Data</td>
         <td>No Data</td>
         <td>No Data</td>
         <td>No Data</td>
@@ -108,6 +114,7 @@
       <tr>
         <th>ID</th>
         <th>Cogs Amount</th>
+        <th>Student Name</th>
         <th>Employees Amount</th>
         <th>Services Amount</th>
         <th>Operating Expenses Amount</th>
@@ -118,6 +125,7 @@
       <% @cash_out_histories.each do |history| %>
         <tr>
           <td><%= history.id %></td>
+          <td><%= history.cash_management_table.student_company.student.first_name %></td>
           <td><%= history.cogs_amount %></td>
           <td><%= history.employees_amount %></td>
           <td><%= history.services_amount %></td>
