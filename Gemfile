@@ -31,6 +31,7 @@ gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
 gem 'kaminari'
 
+gem 'draper'
 
 
 # Use Active Storage variant

@@ -1,3 +1,5 @@
+<div style="text-align: center">
+
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -18,7 +20,7 @@
   <%= f.select :role, User.roles.keys %>
 
   <% if current_user.avatar.url.present? %>
-    <%= image_tag(current_user.avatar.url) %>
+    <%= image_tag(current_user.avatar.url)  %>
     <%= f.label :remove_avatar do %>
       <%= f.check_box :remove_avatar %>
     <% end %>
@@ -56,12 +58,12 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update",   class: "btn btn-xs btn-success" %>
   </div>
 <% end %>
 
 <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>
+<%= link_to "Back", :back,  class: "btn btn-xs btn-danger" %>

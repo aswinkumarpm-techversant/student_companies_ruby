@@ -42,6 +42,10 @@ GEM
       globalid (>= 0.3.6)
     activemodel (6.0.3.4)
       activesupport (= 6.0.3.4)
+    activemodel-serializers-xml (1.0.2)
+      activemodel (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (6.0.3.4)
       activemodel (= 6.0.3.4)
       activesupport (= 6.0.3.4)
@@ -99,6 +103,12 @@ GEM
     diff-lcs (1.4.4)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    draper (4.0.1)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
+      activemodel-serializers-xml (>= 1.0)
+      activesupport (>= 5.0)
+      request_store (>= 1.0)
     erubi (1.10.0)
     execjs (2.7.0)
     fabrication (2.21.1)
@@ -219,6 +229,8 @@ GEM
       ffi (~> 1.0)
     redis (4.2.5)
     regexp_parser (1.8.2)
+    request_store (1.5.0)
+      rack (>= 1.4)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -326,6 +338,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   carrierwave
   devise
+  draper
   fabrication
   factory_bot_rails
   faker

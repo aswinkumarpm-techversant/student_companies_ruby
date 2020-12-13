@@ -6,7 +6,8 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :update, :destroy, :edit]
   # GET /companies
   def index
-    @companies = Company.all
+    # @companies = Company.all
+    @companies = Company.page params[:page]
   end
   # GET /companies/1
   def show
