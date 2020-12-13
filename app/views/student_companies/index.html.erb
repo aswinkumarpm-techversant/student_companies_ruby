@@ -13,8 +13,10 @@
   <% @student_companies.each do |company| %>
     <tr>
       <td><%= company.id %></td>
-      <td><%= Student.find_by(id: company.student_id).first_name %></td>
-      <td><%= Company.find_by(id: company.company_id) %></td>
+      <td><%= company.student.first_name %></td>
+        <% unless company.company.nil? %>
+      <td><%= company.company.name %></td>
+      <% end %>
 <!--      <td><%#= link_to 'Edit', edit_student_company_path(company),  class: "btn btn-xs btn-primary" %></td>-->
 <!--      <td><%#= link_to 'Delete', student_company_path(company), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>-->
 

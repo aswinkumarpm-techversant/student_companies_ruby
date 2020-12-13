@@ -12,7 +12,7 @@
   <% @student_companies.each do |company| %>
     <tr>
       <td><%= company.id %></td>
-      <td><%= Company.find_by(id: company.company_id).name %></td>
+      <td><%= company.company.name %></td>
       <td><%= link_to 'Show', student_company_path(company),  class: "btn btn-xs btn-success" %>
             <%#= link_to 'Edit', edit_student_company_path(company),  class: "btn btn-xs btn-primary" %>
             <%= link_to 'Delete', student_company_path(company), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>

@@ -1,9 +1,21 @@
 
 
-<!--<p>-->
-<!--  <strong>Last Name:</strong>-->
-  <%#= @student_company.company_id %>
-<!--</p>-->
+<p style="text-align: center">
+  <strong>Comapany Name:</strong>
+  <%= @student_company.company.name %>
+</p>
+
+<p style="text-align: center">
+  <strong> Currency:</strong>
+  <%= @student_company.company.currency %>
+</p>
+
+<p style="text-align: center">
+  <strong>Country:</strong>
+  <%= @student_company.company.country %>
+</p>
+
+
 
 <% if @cash_management_table.nil? %>
 
