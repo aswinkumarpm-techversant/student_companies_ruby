@@ -3,8 +3,9 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(sign_up_params)
-    if @user.save
-      token = JsonWebToken.encode({user_id: @user.id})
+    if @user.save && @user.valid_password?(params[:password])
+
+    token = JsonWebToken.encode({user_id: @user.id})
       render json: {user: @user, token: token}
     else
       render json: { errors: @user.errors }
