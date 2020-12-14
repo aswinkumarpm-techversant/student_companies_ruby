@@ -20,7 +20,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.16'
+gem 'bcrypt', '~> 3.1.16'
 gem 'sinatra'
 gem 'rest-client'
 
@@ -47,6 +47,8 @@ gem 'figaro'
 gem 'jwt'
 
 gem 'rack-cors'
+gem 'dotenv-rails', groups: [:development, :test]
+
 
 gem 'pry', '~> 0.13.1'
 gem 'sidekiq'
