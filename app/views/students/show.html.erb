@@ -1,3 +1,4 @@
+<div style="text-align: center">
 
 <p>
   <strong>First Name:</strong>
@@ -9,5 +10,17 @@
   <%= @student.last_name %>
 </p>
 
+  <p>
+    <strong>Email:</strong>
+    <%= @student.email %>
+  </p>
+
+  <p>
+    <strong>Photo:</strong>
+    <%= image_tag(@student.avatar.url, size: "250x250", alt: "Photo") %>
+  </p>
+
+
+</div>
 
 <%= link_to 'Back', students_path %>
